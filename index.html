@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Orderly Art</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="img/icons/location_icon.png">
+        <link href="scripts/mainStyle.css" rel="stylesheet" type="text/css"/>
+        <script src="scripts/buttonScripts.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-56288388-4', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body>
+        <div id="op" class="openOverlay" onclick="openPopup(this);">
+            <div class="bar1" id="bar"></div>
+            <div class="bar2" id="bar"></div>
+            <div class="bar3" id="bar"></div>
+        </div>
+        <div id="firstNotif">Already submitted data? Click here</div>
+        <div id="searchContainer">
+            <img id="searchData" src=img/icons/search_icon.png alt="Search Saved Data" width=55 height="55">
+            <form class="search">
+                <input type="text" list="allArt" id="dataSearch" onchange="removeIcon();" oninput="removeIcon();" autocomplete="off" placeholder="Search Submissions" onkeydown="if (event.keyCode === 13) {
+                            return false;
+                        }"/>
+                <datalist id="allArt"></datalist>
+            </form>
+        </div>
+    <center>
+        </br>
+        <div align="center" id="mainBackground" class="dataInput">
+            <div id="overlayPanel">
+                <p>
+                    <br>
+                <center>
+                    <br>
+                    <h1>
+                        Fetch Your 
+                        Submissions
+                    </h1>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" id="loginField" style="width:90%;" placeholder="Enter your ID"/>
+                            </td>
+                            <td>
+                                <button title="Check ID" style="width:auto;position:relative;" onclick="login();">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="position: absolute;bottom: 0;">
+                        <img src="img/VincentLogo5.png" style="width: 15%; height:auto;"/>
+                        <h4>Website made by Vincent Aliquo</h4>
+                        <h4><a href="www.aliquodigitalportfolio.com" style="text-decoration: none;">www.aliquodigitalportfolio.com</a>
+                    </div>
+                </center>
+            </div>
+            <table border="0px">
+                <tr>
+                    <td>
+                        </p>
+                        <input type="text" class="txtSearch" id="txtSearch1" autofocus="autofocus" placeholder="Artist"/></p>
+                        <input type="text" class="txtSearch" id="txtSearch2" placeholder="Name"/></p>
+                        <input type="text" class="txtSearch" id="txtSearch3" placeholder="Location"/></p>
+                        <input type="text" class="txtSearch" id="txtSearch4" placeholder="Period"/></p>
+                        <input type="text" class="txtSearch" id="txtSearch5" placeholder="Date"/></p>
+                    </td>
+                    <td>
+                        </br>
+                        <figure>
+                            <img id="selectedImage" src=img/icon.png alt="Empty Icon" width=256 height="256"/>
+                            <button title="Manually Change Image" onclick="openChangeImg();" id="linkImageButton">Change Image</button>
+                        </figure>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button title="Submit info" onclick="submit();">Submit</button>&nbsp;<button title="Clear info from text fields" onclick="clearField();">Clear Info</button>
+                    </td>
+                    <td>
+                        <button title="Search for an image" id="imageButtonID" onclick="searchImage();">Search Image</button>&nbsp;<button title="Clear the current image" id="clearImageID" onclick="clearImage();">Clear Image</button>
+                    </td>
+                </tr>
+            </table>
+            </br>
+            <div id="periodSection">
+                <div id="scrollSection">
+                    <div id="periodBank"></div>
+                </div>
+                <div id="periodFilter">
+                    <img src=img/icons/alphabet_icon.png alt="Alphabet Icon" class="filterIcons" id="alphabetFilter" width=25 height="27"/>
+                    <img src=img/icons/time_icon.png alt="Time Icon" class="filterIcons" id="timeFilter" width=25 height="27"/>
+                </div>
+            </div>
+            </br>
+            <table style="padding-left: 10px;padding-right: 10px;">
+                <tr>
+                    <td>
+                        <select id="filterSelect" onchange="filterAddInput();">
+                            <option id="filterSelection1" value="none">No filter</option>
+                            <option id="filterSelection2" value="artist">Filter by Artist</option>
+                            <option id="filterSelection2" value="location">Filter by Location</option>
+                            <option id="filterSelection3" value="date_order">Filter by Date (old - recent)</option>
+                            <option id="filterSelection3" value="date_flexible">Filter by Date (set own parameters)</option>
+                        </select>
+                    </td>
+                    <td style="width:30%">
+                        <div id="filterInput"></div>
+                    </td>
+                    <td>
+                        <button title="Set Filters" onclick="filterUpdate();">Set Filters</button>
+                    </td>
+                </tr>
+            </table>
+            </br>
+            <div id="objectArray"></div>
+    </center>
+</div>
+<div id="errorPopup" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal(1);">&times;</span>
+        <p>Please add a name</p>
+    </div>
+</div>
+<div id="changeImg" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal(3);">&times;</span>
+        <table>
+            <tr>
+                <td>
+                    <input type="text" id="urlField" style="width:80%;" placeholder="Enter URL"/>
+                </td>
+                <td>
+                    <button title="Submit Image URL" style="width:auto;position:relative;" onclick="submitURL();">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="artPopup" class="modal2">
+    <div class="modal-content2">
+        <span class="close2" onclick="closeModal(2);">&times;</span>
+        <div class="dataInput">
+            <table border="0px" id="artTable">
+                <tr>
+                    <td>
+                        </p>
+                        <input type="text" class="artDoc" id="artDoc1" placeholder="Artist"/></p>
+                        <input type="text" class="artDoc" id="artDoc2" placeholder="Name"/></p>
+                        <input type="text" class="artDoc" id="artDoc3" placeholder="Location"/></p>
+                        <input type="text" class="artDoc" id="artDoc4" placeholder="Period"/></p>
+                        <input type="text" class="artDoc" id="artDoc5" placeholder="Date"/></p>
+                    </td>
+                    <td>
+                        </br>
+                        <figure>
+                            <img id="selectedImage2" src=img/icon.png alt="Empty Icon" width=256 height="256"/>
+                            <button title="Manually Change Image" onclick="openChangeImg();" id="linkImageButton">Change Image</button>
+                        </figure>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="saveArtID"></div>
+                    </td>
+                    <td>
+                        <div id="deleteArtID"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="output"></div>
+<script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+<script>
+                                // Initialize Firebase
+                                var config = {
+                                    apiKey: "AIzaSyAxsqey54tFbptSOxodHkiZ0_1961UNdGs",
+                                    authDomain: "orderly-art.firebaseapp.com",
+                                    databaseURL: "https://orderly-art.firebaseio.com",
+                                    projectId: "orderly-art",
+                                    storageBucket: "",
+                                    messagingSenderId: "712162364830"
+                                };
+                                firebase.initializeApp(config);
+</script>
+</body>
+</html>

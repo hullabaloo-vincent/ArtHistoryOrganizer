@@ -1,0 +1,482 @@
+html *{-webkit-transition: all 200ms ease-in;transition: all 200ms ease-in;}
+#mainBackground{width:50.0vw; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 4px 0 rgba(0, 0, 0, 0.3);}
+#selectedImage{ width:15.0vw; height:auto; padding-left: 40px;border-bottom: solid 1px #ffffff;box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.0), 0 1px 4px 0 rgba(0, 0, 0, 0.0);}
+#selectedImage2{ width:15.0vw; height:auto; padding-left: 40px;border-bottom: solid 1px #ffffff;box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.0), 0 1px 4px 0 rgba(0, 0, 0, 0.0);}
+::selection {
+    background: #F3EFE0;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #cccccc;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0,0,0,0.1); 
+}
+.txtSearch{ width:20.0vw;color:#0079e2;background: rgba(255, 255, 255, 0.8);height:20px;}
+.txtSearch2{ color:#0079e2;background: rgba(255, 255, 255, 0.8);height:20px;}
+input[type="text"] {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+}
+input[type="text"]:focus {
+    outline: none;
+}
+.dataInput input[type="text"] {
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.0), 0 1px 4px 0 rgba(0, 0, 0, 0.0);
+}
+.dataInput input[type="text"]:focus,
+.dataInput input[type="text"].focus {
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+.dataInput input[type="text"]:hover,
+.dataInput input[type="text"].hover {
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+/*button {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    outline: none;
+    background:white;
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+button:active {
+    outline: none;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}*/
+button {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    outline: none;
+    color: black;
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    background: #ffffff;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    z-index: 0;
+}
+button:active {
+    outline: none;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+button{
+    position: relative;
+    overflow: hidden;
+}
+button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(226, 226, 226, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(80, 80);
+    }
+}
+button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+select{
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    outline: none;
+    background:white;
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+option{
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    outline: none;
+    background:white;
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 40%;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal2 {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content2 {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#searchData{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-border-radius: 99em;
+    -moz-border-radius: 99em;
+    border-radius: 99em;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.19);  
+}
+#searchData:hover{
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);   
+    padding-right:12em;
+}
+#dataSearch{
+    background-color: rgba(0,0,0,0.0);
+    display: initial;
+    position:absolute;
+    margin: 0;
+    width: 11em;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    visibility: hidden;
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    left:45px;
+    top:12px;
+}
+#searchContainer{
+    left:70px;
+    width:30%;
+    visibility: hidden;
+    position: fixed;
+}
+#searchContainer:hover #searchData {
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);   
+    padding-right:13em;
+    background:white;
+}
+#searchContainer:hover #dataSearch{
+    visibility: visible;
+}
+#periodSection{
+    visibility:hidden;
+}
+#scrollSection{
+    overflow: scroll; /* Scrollbar are always visible */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space:nowrap;
+}
+#scrollSection:hover{
+    overflow-x: auto;
+}
+#periodBank{
+    width: 80%;
+    display:inline-block;
+    margin-left:4px;
+}
+#periodBankButton{
+    display: initial;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    width:auto;
+    box-shadow: none;
+    outline: none;
+    padding: 10px;
+    border: none;
+    mix-blend-mode: difference;
+    transition: border 0.3s;
+    border-radius: 20px 20px 20px 20px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+#periodBankButton:hover{
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+#alphabetFilter:hover{
+    content:url("http://orderlyart.com/siteTest/img/icons/alphabet_icon_selected.png");
+}
+#timeFilter:hover{
+    content:url("http://orderlyart.com/siteTest/img/icons/time_icon_selected.png");
+}
+figure{
+    display: inline-block;
+    position: relative;
+}
+#linkImageButton{
+    width: 14vw;
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
+    background:white;
+    color: black;
+}
+#linkImageButton:hover {
+    visibility: visible;
+}
+#selectedImage:hover + #linkImageButton{
+    visibility: visible;
+}
+#selectedImage2:hover + #linkImageButton{
+    visibility: visible;
+}
+#overlayPanel{
+    position:fixed;
+    top:0;
+    left:0;
+    width:25%;
+    height: 100%;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    background-color:#ffffff;
+    color: black;
+    z-index: 999;
+    display: none;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+.openOverlay{
+    position:fixed;
+    top:0;
+    left:0;
+    padding: 20px;
+    z-index: 9999;
+}
+#loginPanel{
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    width: auto;
+    background: white;
+    z-index: 1000;
+    height: 100%;
+}
+#bar{
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #008fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+    background-color: #000000;
+}
+.change .bar2 {
+    opacity: 0;
+}
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+    background-color: #000000;
+}
+#loginField{
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+#loginField:focus{
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+#urlField{
+    padding: 10px;
+    border: none;
+    transition: border 0.3s;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+#urlField:focus{
+    border-bottom: solid 1px #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+@media only screen and (max-width : 1150px) {
+    #mainBackground{
+        width:100.0vw;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.0), 0 0px 0px 0 rgba(0, 0, 0, 0.0);
+    }
+    #selectedImage{
+        width:30.0vw;
+    }
+    #overlayPanel{
+        width:100%;
+    }
+}
+/*@media only screen and (max-width: 860px){
+   #mainBackground{
+       position: absolute;
+       top: 80px;
+       z-index: -40;
+   }
+}*/
+#firstNotif{
+    position: fixed;
+    top: -10px;
+    left: 40px;
+    padding:10px;
+    color: #fff;
+    background-color: #008fff;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px;
+    width:230px;
+    margin:30px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+#firstNotif:before {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    left:-20px;
+    border: 10px solid transparent;
+    border-right-color: #008fff;
+}
